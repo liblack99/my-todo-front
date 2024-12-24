@@ -86,7 +86,7 @@ const fetchTodos = async (dispatch: AppDispatch) => {
         Authorization: `Bearer ${localStorage.getItem("token_todos")}`,
       },
     });
-    dispatch(setTodos(response.data)); // Establece las tareas en el estado
+    dispatch(setTodos(response.data));
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
       // Captura el mensaje del servidor

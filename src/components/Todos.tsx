@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import {type Todo, Status} from "../types";
+import {useSelector} from "react-redux";
+import {RootState} from "../app/store";
 
 interface TodosProps {
   todos: Todo[];
   onStatusChange: (id: number, newStatus: Status) => void;
   onChange: (id: number, newTodo: string, newTodoDescription: string) => void;
   onDelete: (id: number) => void;
-  error: string | null;
 }
 
 const Todos: React.FC<TodosProps> = ({
@@ -14,11 +15,11 @@ const Todos: React.FC<TodosProps> = ({
   onStatusChange,
   onChange,
   onDelete,
-  error,
 }) => {
   const [editId, setEditId] = useState<number | null>(null);
   const [newTitle, setNewTitle] = useState<string>("");
   const [newDescription, setNewDescription] = useState<string>("");
+  const {error} = useSelector((state: RootState) => state.todos);
 
   const handleEditToggle = (
     id: number,

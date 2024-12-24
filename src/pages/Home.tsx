@@ -16,7 +16,7 @@ import {useNavigate} from "react-router-dom";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {todos, error} = useSelector((state: RootState) => state.todos);
+  const {todos} = useSelector((state: RootState) => state.todos);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -67,7 +67,6 @@ const Home: React.FC = () => {
         onStatusChange={handleChangeStatus}
         onChange={handleEditTodo}
         onDelete={handleDeleteTodo}
-        error={error}
       />
     </div>
   );
