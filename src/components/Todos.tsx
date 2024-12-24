@@ -1,7 +1,5 @@
 import React, {useState} from "react";
 import {type Todo, Status} from "../types";
-import {useSelector} from "react-redux";
-import {RootState} from "../app/store";
 
 interface TodosProps {
   todos: Todo[];
@@ -19,7 +17,6 @@ const Todos: React.FC<TodosProps> = ({
   const [editId, setEditId] = useState<number | null>(null);
   const [newTitle, setNewTitle] = useState<string>("");
   const [newDescription, setNewDescription] = useState<string>("");
-  const {error} = useSelector((state: RootState) => state.todos);
 
   const handleEditToggle = (
     id: number,
@@ -38,14 +35,6 @@ const Todos: React.FC<TodosProps> = ({
       setNewDescription(currentDescription);
     }
   };
-
-  if (error) {
-    return (
-      <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto font-bold text-center">
-        <p>{error}</p>
-      </div>
-    );
-  }
 
   if (todos.length === 0) {
     return (

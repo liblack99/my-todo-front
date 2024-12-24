@@ -59,7 +59,7 @@ const todosSlice = createSlice({
     setFilter: (state, action: PayloadAction<TodosState["filter"]>) => {
       state.filter = action.payload;
     },
-    setError: (state, action: PayloadAction<string>) => {
+    setError: (state, action: PayloadAction<string | null>) => {
       state.error = action.payload;
       state.loading = false;
     },
