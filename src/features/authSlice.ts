@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import axios from "axios";
 import {AppDispatch} from "../app/store";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://backend-my-todo.onrender.com";
 
 interface User {
   id: number;
@@ -79,12 +79,10 @@ export const registerUser =
       console.log(response.data);
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
-        // Aquí verificamos si el error es de tipo AxiosError
         dispatch(
           setError(error.response?.data || "Error al registrar el usuario")
         );
       } else {
-        // En caso de que no sea un error de Axios
         dispatch(setError("Error desconocido"));
       }
     }
@@ -103,7 +101,6 @@ export const loginUser =
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
         dispatch(setError(error.response?.data || "Error al iniciar sesión"));
-        throw new Error(error.response?.data || "Error al iniciar sesión");
       } else {
         dispatch(setError("Error desconocido"));
         throw new Error("Error desconocido");
