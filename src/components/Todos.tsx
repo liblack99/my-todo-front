@@ -39,18 +39,18 @@ const Todos: React.FC<TodosProps> = ({
     }
   };
 
-  if (error) {
-    return (
-      <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto font-bold text-center">
-        <p>{error}</p>
-      </div>
-    );
-  }
-
   if (todos.length === 0) {
     return (
       <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-bold  font-roboto ">
         <p className="text-center">No hay tareas para mostrar.</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto font-bold text-center">
+        <p>{error}</p>
       </div>
     );
   }

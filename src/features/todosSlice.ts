@@ -89,12 +89,10 @@ const fetchTodos = async (dispatch: AppDispatch) => {
     dispatch(setTodos(response.data));
   } catch (error) {
     if (axios.isAxiosError(error) && error.response) {
-      // Captura el mensaje del servidor
       const serverMessage =
         error.response.data || "Error desconocido al obtener las tareas.";
       dispatch(setError(serverMessage));
     } else {
-      // Error genérico
       console.error("Error inesperado al obtener tareas:", error);
       dispatch(setError("Error inesperado al obtener las tareas."));
     }
