@@ -3,7 +3,7 @@ import {type Todo, Status} from "../types";
 import axios from "axios";
 import {AppDispatch} from "../app/store";
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = "https://backend-my-todo.onrender.com";
 
 // Estado inicial
 interface TodosState {
