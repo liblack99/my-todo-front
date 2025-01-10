@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Todos from "../components/Todos";
 import {AppDispatch, RootState} from "../app/store";
 import {useSelector, useDispatch} from "react-redux";
@@ -17,6 +17,7 @@ import {useNavigate} from "react-router-dom";
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const {todos} = useSelector((state: RootState) => state.todos);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -62,6 +63,7 @@ const Home: React.FC = () => {
         </button>
       </div>
       <CreateTodo />
+
       <Todos
         todos={todos}
         onStatusChange={handleChangeStatus}
