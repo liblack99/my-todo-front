@@ -11,7 +11,7 @@ const Login: React.FC = () => {
 
   const {token, loading, error} = useSelector((state: RootState) => state.auth);
 
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   useEffect(() => {
@@ -22,8 +22,8 @@ const Login: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username && password) {
-      dispatch(loginUser({username, password}));
+    if (email && password) {
+      dispatch(loginUser({email, password}));
     } else {
       alert("Please fill in both fields");
     }
@@ -38,14 +38,14 @@ const Login: React.FC = () => {
       <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="username" className="block text-sm font-medium">
-            Username
+          <label htmlFor="email" className="block text-sm font-medium">
+            Email
           </label>
           <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             className="w-full p-2 mt-1 border rounded-md"
             required
           />
