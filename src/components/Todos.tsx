@@ -9,7 +9,14 @@ interface TodosProps {
   onChange: (id: number, newTodo: string, newTodoDescription: string) => void;
   onDelete: (id: number) => void;
 }
-type TodoFilter = "all" | "pending" | "in-progress" | "completed";
+type TodoFilter = "all" | "pending" | "in_progress" | "completed";
+
+const filters = {
+  all: "All",
+  pending: "Pending",
+  in_progress: "In Progress",
+  complete: "Completed",
+};
 
 const Todos: React.FC<TodosProps> = ({
   todos,
@@ -22,6 +29,7 @@ const Todos: React.FC<TodosProps> = ({
   const [newDescription, setNewDescription] = useState<string>("");
   const {error} = useSelector((state: RootState) => state.todos);
   const [filter, setFilter] = useState<TodoFilter>("all");
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const handleEditToggle = (
     id: number,
@@ -44,8 +52,13 @@ const Todos: React.FC<TodosProps> = ({
   const filteredTodos =
     filter === "all" ? todos : todos.filter((todo) => todo.status === filter);
 
+  const handleRemove = (id: number) => {
+    setDeletingId(id);
+    onDelete(id);
+  };
+
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto">
+    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto  flex justify-center flex-col items-center overflow-hidden transition-all duration-1000 ease-in-out   ">
       <div className="mb-4 w-full flex justify-end items-center">
         <label className="font-medium text-gray-600 mr-4">
           Filter by status:
@@ -54,14 +67,17 @@ const Todos: React.FC<TodosProps> = ({
           value={filter}
           onChange={(e) => setFilter(e.target.value as TodoFilter)}
           className="border rounded-md p-2 bg-white shadow-sm">
-          <option value="all">All</option>
-          <option value="pending">Pending</option>
-          <option value="in-progress">In Progress</option>
-          <option value="completed">Completed</option>
+          {Object.entries(filters).map(([key, name]) => (
+            <option key={key} value={key}>
+              {name}
+            </option>
+          ))}
         </select>
       </div>
       {todos.length === 0 && (
-        <p className="text-center">There are no tasks to show.</p>
+        <p className="text-center text-2xl text-gray-500">
+          There are no tasks to show.
+        </p>
       )}
       {error && <p>{error}</p>}
       {todos.length > 0 && (
@@ -69,7 +85,10 @@ const Todos: React.FC<TodosProps> = ({
           {filteredTodos.map((todo) => (
             <li
               key={todo.id}
-              className={`border rounded-lg shadow-sm p-4 transition-shadow hover:shadow-md`}>
+              id="todo"
+              className={`border rounded-lg shadow-sm p-4 transition-shadow hover:shadow-md animate-zoom-in ${
+                deletingId === todo.id ? "animate-zoom-out" : ""
+              }`}>
               <div className="flex justify-between items-center mb-3">
                 {editId === todo.id ? (
                   <input
@@ -138,7 +157,7 @@ const Todos: React.FC<TodosProps> = ({
                 ) : (
                   <button
                     className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 active:scale-95 transition-all"
-                    onClick={() => onDelete(todo.id)}>
+                    onClick={() => handleRemove(todo.id)}>
                     Delete
                   </button>
                 )}
