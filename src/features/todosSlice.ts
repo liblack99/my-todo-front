@@ -128,7 +128,7 @@ const editTodo = async (
 ) => {
   try {
     await axios.patch(
-      "http://localhost:5000/api/todos/edit",
+      `${API_URL}/api/todos/edit`,
       {id, title: newTitle, description: newDescription},
       {
         headers: {

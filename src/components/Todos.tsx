@@ -3,14 +3,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../app/store";
 import TodoItem from "./TodoItem";
 
-type TodoFilter = "all" | "pending" | "in_progress" | "completed";
-
-const filters = {
-  all: "All",
-  pending: "Pending",
-  in_progress: "In Progress",
-  complete: "Completed",
-};
+type TodoFilter = "all" | "pending" | "in-progress" | "completed";
 
 const Todos: React.FC = () => {
   const {error, todos} = useSelector((state: RootState) => state.todos);
@@ -29,11 +22,10 @@ const Todos: React.FC = () => {
           value={filter}
           onChange={(e) => setFilter(e.target.value as TodoFilter)}
           className="border rounded-md p-2 bg-white shadow-sm">
-          {Object.entries(filters).map(([key, name]) => (
-            <option key={key} value={key}>
-              {name}
-            </option>
-          ))}
+          <option value="all">All</option>
+          <option value="pending">Pending</option>
+          <option value="in-progress">In progress</option>
+          <option value="completed">Completed</option>
         </select>
       </div>
       {todos.length === 0 && (
@@ -47,7 +39,7 @@ const Todos: React.FC = () => {
       {todos.length > 0 && (
         <ul className="flex flex-col gap-2  w-full overflow-hidden overflow-y-auto">
           {filteredTodos.map((todo) => (
-            <TodoItem todo={todo} />
+            <TodoItem todo={todo} key={todo.id} />
           ))}
         </ul>
       )}
