@@ -4,7 +4,7 @@ Este proyecto es una aplicación web para la gestión de tareas, que permite a l
 
 ## Demo
 
-Puedes ver mi portafolio en vivo [aquí](https://task-manager-app-web.vercel.app/).
+Puedes ver el proyecto [aquí](https://task-manager-app-web.vercel.app/).
 
 ## Capturas de pantalla
 
