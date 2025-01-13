@@ -58,7 +58,7 @@ const Todos: React.FC<TodosProps> = ({
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto  flex flex-col items-center h-[450px]  transition-all duration-1000 ease-in-out   ">
+    <div className="p-4 bg-gray-100 rounded-md shadow-md w-full sm:w-full md:w-[600px] lg:w-[600px] font-roboto  flex flex-col items-center h-[452px]  transition-all duration-1000 ease-in-out   ">
       <div className="mb-4 w-full flex justify-end items-center">
         <label className="font-medium text-gray-600 mr-4">
           Filter by status:

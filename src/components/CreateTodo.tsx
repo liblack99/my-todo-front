@@ -34,7 +34,7 @@ const CreateTodo: React.FC = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto">
+    <div className="p-4 bg-gray-100 rounded-md shadow-md w-full sm:w-full md:w-[600px] lg:w-[600px] font-roboto transition-all duration-1000 ease-in-out ">
       <h2 className="text-lg font-bold mb-4">Create a New Task</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
