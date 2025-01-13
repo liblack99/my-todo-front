@@ -25,7 +25,8 @@ Puedes ver el proyecto [aquí](https://task-manager-app-web.vercel.app/).
 - **Estilización**: Tailwind CSS
 - **Autenticación**: Sistema de login
 - **Base de Datos**: Turso DB
-
+- **Backend**: Node js
+  
 ## **Instalación Frontend**
 
 1. Clona este repositorio: `git clone <git@github.com:liblack99/task-manager.git>`.
