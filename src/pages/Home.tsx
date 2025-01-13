@@ -1,22 +1,16 @@
 import React, {useEffect} from "react";
 import Todos from "../components/Todos";
-import {AppDispatch, RootState} from "../app/store";
-import {useSelector, useDispatch} from "react-redux";
+import {AppDispatch} from "../app/store";
+import {useDispatch} from "react-redux";
 
 import CreateTodo from "../components/CreateTodo";
-import {
-  fetchTodos,
-  updateTodoStatus,
-  editTodo,
-  deleteTodo,
-} from "../features/todosSlice";
-import type {Status} from "../types";
+import {fetchTodos} from "../features/todosSlice";
+
 import {getUser, logout} from "../features/authSlice";
 import {useNavigate} from "react-router-dom";
 
 const Home: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {todos} = useSelector((state: RootState) => state.todos);
 
   const navigate = useNavigate();
 
@@ -24,22 +18,6 @@ const Home: React.FC = () => {
     fetchTodos(dispatch);
     dispatch(getUser());
   }, [dispatch]);
-
-  const handleChangeStatus = (id: number, newStatus: Status) => {
-    updateTodoStatus(dispatch, id, newStatus);
-  };
-
-  const handleEditTodo = (
-    id: number,
-    newTitle: string,
-    newDescription: string
-  ) => {
-    editTodo(dispatch, id, newTitle, newDescription);
-  };
-
-  const handleDeleteTodo = (id: number) => {
-    deleteTodo(dispatch, id);
-  };
 
   const handleLogout = () => {
     dispatch(logout());
@@ -49,9 +27,9 @@ const Home: React.FC = () => {
   return (
     <>
       <header className="relative w-full flex justify-center gap-20 items-center h-20">
-        <h1 className="text-4xl text-center">My Todos</h1>
+        <h1 className="text-4xl text-center">Task Manager</h1>
         <button
-          className="hover:scale-105 transition-all cursor-pointer"
+          className="hover:scale-105 transition-all cursor-pointer absolute right-7"
           onClick={handleLogout}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -65,12 +43,7 @@ const Home: React.FC = () => {
       <main className="h-[calc(100%-160px)]">
         <section className="w-full flex flex-col items-center justify-center gap-4 p-4">
           <CreateTodo />
-          <Todos
-            todos={todos}
-            onStatusChange={handleChangeStatus}
-            onChange={handleEditTodo}
-            onDelete={handleDeleteTodo}
-          />
+          <Todos />
         </section>
       </main>
     </>
