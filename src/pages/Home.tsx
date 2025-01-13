@@ -47,7 +47,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="grid place-content-center mt-10 gap-4">
+    <div className="grid place-content-center  gap-4 h-screen">
       <div className="relative flex justify-center items-center">
         <h1 className="text-4xl text-center">My Todos</h1>
         <button

@@ -58,7 +58,7 @@ const Todos: React.FC<TodosProps> = ({
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto  flex justify-center flex-col items-center overflow-hidden transition-all duration-1000 ease-in-out   ">
+    <div className="p-4 bg-gray-100 rounded-md shadow-md w-[600px] font-roboto  flex flex-col items-center h-[450px]  transition-all duration-1000 ease-in-out   ">
       <div className="mb-4 w-full flex justify-end items-center">
         <label className="font-medium text-gray-600 mr-4">
           Filter by status:
@@ -75,13 +75,15 @@ const Todos: React.FC<TodosProps> = ({
         </select>
       </div>
       {todos.length === 0 && (
-        <p className="text-center text-2xl text-gray-500">
-          There are no tasks to show.
-        </p>
+        <div className="w-full h-full flex justify-center items-center">
+          <p className="text-center text-2xl text-gray-500">
+            There are no tasks to show.
+          </p>
+        </div>
       )}
       {error && <p>{error}</p>}
       {todos.length > 0 && (
-        <ul className="space-y-6">
+        <ul className="flex flex-col gap-2  w-full overflow-hidden overflow-y-auto">
           {filteredTodos.map((todo) => (
             <li
               key={todo.id}
