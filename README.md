@@ -26,7 +26,7 @@ Puedes ver mi portafolio en vivo [aquí](https://task-manager-app-web.vercel.app
 - **Autenticación**: Sistema de login
 - **Base de Datos**: Turso DB
 
-## **Instalación fronted**
+## **Instalación Frontend**
 
 1. Clona este repositorio: `git clone <git@github.com:liblack99/task-manager.git>`.
 2. Entra en el directorio del proyecto: `cd task-manager`.
@@ -34,7 +34,7 @@ Puedes ver mi portafolio en vivo [aquí](https://task-manager-app-web.vercel.app
 4. Inicia el servidor de desarrollo: `npm run dev`.
 5. Abre tu navegador y visita `http://localhost:3000`.
 
-## **Instalación fronted**
+## **Instalación Backend**
 2. Entra en el directorio del proyecto: `cd backend`.
 3. Instala las dependencias: `npm install`.
 4. Inicia el servidor de desarrollo: `npm run dev`.
